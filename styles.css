@@ -1,19 +1,91 @@
 @font-face {
   font-family: 'Mondwest'; /* Choose a name for your font */
-  src: url('fonts/PPMondwest-Regular.otf') format('otf'),; /* Adjust the paths as necessary */
+  src: url('fonts/PPMondwest-Regular.otf') format('opentype'),; /* Adjust the paths as necessary */
   font-weight: normal;
   font-style: normal;
   font-display: swap; /* Controls font loading behavior */
 }
 
+::selection {
+  color: white;
+  background: black;
+}
+
 body {
-    margin: 0;
+    margin: 5%;
 }
 
 .dots {
-    size: 10%;
+    height: 10px;
+    float: right;
 }
 
 .hero-text {
     font-family: 'Mondwest', serif;
+    font-size: 10rem;
+    line-height: auto;
+    margin-top: 45px;
+    margin-bottom: 30px;
+}
+
+.hero-text-white {
+    font-family: 'Mondwest', serif;
+    font-size: 10rem;
+    color: white;
+    line-height: auto;
+    margin-top: 45px;
+    margin-bottom: 30px;
+}
+
+.project-frame {
+    background-color: white;
+    border-width: 15px;
+    border-color: black;
+    border-style: solid;
+    padding-top: 3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 2rem;
+    box-shadow: 15px 15px black;
+    display: inline-block;
+    z-index: 1;
+    position: relative;
+}
+
+.project-frame-black {
+    background-color: black;
+    border-width: 15px;
+    border-color: black;
+    border-style: solid;
+    box-shadow: 15px 15px black;
+    float: right;
+    margin-top: -100px;
+    z-index: 2;
+    position: relative;
+}
+
+.xbox {
+    background-color: white;
+    padding: 20px;
+}
+
+.divheader-black {
+    position: relative;
+}
+
+.hero-text-white {
+    padding-top: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 2rem;
+}
+
+.gridwrapper {
+    margin: 40px;
+}
+
+.bars {
+    height: 50px;
+    width: 100%;
+    z-index: 3;
 }

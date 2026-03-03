@@ -1,3 +1,19 @@
+@font-face {
+  font-family: 'Mondwest'; /* Choose a name for your font */
+  src: url('fonts/PPMondwest-Regular.otf') format('otf'),; /* Adjust the paths as necessary */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Controls font loading behavior */
+}
+
 body {
     margin: 0;
+}
+
+.dots {
+    size: 10%;
+}
+
+.hero-text {
+    font-family: 'Mondwest', serif;
 }

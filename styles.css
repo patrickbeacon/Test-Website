@@ -12,7 +12,43 @@
 }
 
 body {
-    margin: 5%;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+nav {
+    width: 100%;
+    position: sticky;
+    top: 5%;
+    bottom: auto;
+    z-index: 100;
+}
+
+.logo {
+    float: left;
+    height: 0%;
+}
+
+.logo-icon {
+    height: 0%;
+}
+
+.navlinks {
+    display: flex;
+    float: right;
+    list-style-type: none;    
+}
+
+li {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: 'Mondwest', serif;
+    font-size: 1.5rem;
+}
+
+.hero {
+    position: relative;
+    height: 90vh;
 }
 
 .dots {
@@ -22,19 +58,24 @@ body {
 
 .hero-text {
     font-family: 'Mondwest', serif;
-    font-size: 10rem;
+    font-size: 8vw;
     line-height: auto;
-    margin-top: 45px;
-    margin-bottom: 30px;
+    margin-top: 35px;
+    margin-bottom: 15px;
 }
 
 .hero-text-white {
     font-family: 'Mondwest', serif;
-    font-size: 10rem;
+    font-size: 8vw;
     color: white;
     line-height: auto;
-    margin-top: 45px;
-    margin-bottom: 30px;
+    padding-top: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-bottom: 1rem;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 5px;
 }
 
 .project-frame {
@@ -42,14 +83,18 @@ body {
     border-width: 15px;
     border-color: black;
     border-style: solid;
-    padding-top: 3rem;
+    padding-top: 2rem;
     padding-left: 3rem;
     padding-right: 3rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
     box-shadow: 15px 15px black;
     display: inline-block;
     z-index: 1;
-    position: relative;
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: auto;
+    bottom: auto;
 }
 
 .project-frame-black {
@@ -58,10 +103,13 @@ body {
     border-color: black;
     border-style: solid;
     box-shadow: 15px 15px black;
-    float: right;
-    margin-top: -100px;
     z-index: 2;
-    position: relative;
+    display: inline-block;
+    position: absolute;
+    top: auto;
+    left: auto;
+    right: 3vw;
+    bottom: 7%;
 }
 
 .xbox {
@@ -73,19 +121,8 @@ body {
     position: relative;
 }
 
-.hero-text-white {
-    padding-top: 2rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    padding-bottom: 2rem;
-}
-
-.gridwrapper {
-    margin: 40px;
-}
-
 .bars {
-    height: 50px;
+    height: 5vh;
     width: 100%;
     z-index: 3;
 }

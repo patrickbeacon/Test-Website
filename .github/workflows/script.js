@@ -1,51 +1,52 @@
+// ...existing code...
 (function () {
   const selectors = ['.project-frame', '.project-frame-black'];
 
   selectors.forEach(sel => {
     document.querySelectorAll(sel).forEach(el => {
-      el.style.touchAction = 'none'; // prefer pointer events
+      el.style.touchAction = 'none';
+      el.style.userSelect = 'none';
       el.addEventListener('pointerdown', onPointerDown);
     });
   });
 
   function onPointerDown(e) {
     const el = e.currentTarget;
-    el.setPointerCapture(e.pointerId);
+    // capture pointer so moves continue even if pointer leaves element
+    el.setPointerCapture?.(e.pointerId);
 
     const rect = el.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left;
-    const offsetY = e.clientY - rect.top;
+    const startLeft = rect.left + window.scrollX;
+    const startTop = rect.top + window.scrollY;
+    const offsetX = e.clientX + window.scrollX - startLeft;
+    const offsetY = e.clientY + window.scrollY - startTop;
 
-    // switch to absolute so we can move it freely
+    // switch to absolute and set initial position
     el.style.position = 'absolute';
+    el.style.left = startLeft + 'px';
+    el.style.top = startTop + 'px';
     el.style.zIndex = 9999;
-    // ensure initial left/top are set
-    moveAt(e.clientX, e.clientY);
 
-    function moveAt(clientX, clientY) {
-      const left = clientX - offsetX;
-      const top = clientY - offsetY;
+    function onMove(ev) {
+      const left = ev.clientX + window.scrollX - offsetX;
+      const top = ev.clientY + window.scrollY - offsetY;
 
-      // clamp so element stays in viewport
-      const maxLeft = Math.max(0, window.innerWidth - rect.width);
-      const maxTop = Math.max(0, window.innerHeight - rect.height);
+      // optional clamp to document bounds
+      const maxLeft = Math.max(0, document.documentElement.scrollWidth - rect.width);
+      const maxTop = Math.max(0, document.documentElement.scrollHeight - rect.height);
 
       el.style.left = Math.max(0, Math.min(left, maxLeft)) + 'px';
       el.style.top = Math.max(0, Math.min(top, maxTop)) + 'px';
     }
 
-    function onPointerMove(ev) {
-      moveAt(ev.clientX, ev.clientY);
-    }
-
-    function onPointerUp(ev) {
-      try { el.releasePointerCapture(ev.pointerId); } catch {}
-      window.removeEventListener('pointermove', onPointerMove);
-      el.removeEventListener('pointerup', onPointerUp);
+    function onUp(ev) {
+      try { el.releasePointerCapture?.(ev.pointerId); } catch (err) {}
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
       el.style.zIndex = '';
     }
 
-    window.addEventListener('pointermove', onPointerMove);
-    el.addEventListener('pointerup', onPointerUp);
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
   }
 })();

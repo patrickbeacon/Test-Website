@@ -126,3 +126,16 @@ li {
     width: 100%;
     z-index: 3;
 }
+
+.project-frame,
+.project-frame-black {
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.project-frame:active,
+.project-frame-black:active {
+  cursor: grabbing;
+}
